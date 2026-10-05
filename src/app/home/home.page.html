@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mis Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (tareas().length === 0) {
+    <div class="vacio">
+      <p>No hay tareas todavía.</p>
+      <p>Toca el botón <strong>+</strong> para crear una.</p>
+    </div>
+  } @else {
+    <ion-list>
+      @for (tarea of tareas(); track tarea.id) {
+        <ion-item-sliding>
+          <ion-item>
+            <ion-checkbox
+              slot="start"
+              [checked]="tarea.completada"
+              (ionChange)="cambiarEstado(tarea, $event)"
+              aria-label="Marcar tarea como completada"
+            ></ion-checkbox>
+
+            <ion-label [class.completada]="tarea.completada">
+              <h2>{{ tarea.titulo }}</h2>
+              <p>{{ tarea.descripcion }}</p>
+            </ion-label>
+
+            <ion-badge slot="end" [color]="colorPrioridad(tarea.prioridad)">
+              {{ tarea.prioridad }}
+            </ion-badge>
+
+            <ion-button
+              slot="end"
+              fill="clear"
+              color="danger"
+              (click)="eliminar(tarea.id)"
+              aria-label="Eliminar tarea"
+            >
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="eliminar(tarea.id)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      }
+    </ion-list>
+  }
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="abrirFormulario()" aria-label="Agregar tarea">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small">
+      Total: {{ tareas().length }} · Pendientes: {{ pendientes() }}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

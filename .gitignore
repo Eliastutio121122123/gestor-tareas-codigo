@@ -1,0 +1,13 @@
+# Dependencias y artefactos generados
+/node_modules/
+/www/
+/dist/
+/.angular/
+/coverage/
+
+# Configuración local del editor
+/.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

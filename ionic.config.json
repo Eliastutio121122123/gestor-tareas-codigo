@@ -1,0 +1,7 @@
+{
+  "name": "gestor-tareas-codigo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

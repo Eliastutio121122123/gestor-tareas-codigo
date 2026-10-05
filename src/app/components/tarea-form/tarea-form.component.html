@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelar()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Nueva tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <ion-input
+      formControlName="titulo"
+      label="Título"
+      labelPlacement="floating"
+      fill="outline"
+      placeholder="Ej: Estudiar Angular"
+    ></ion-input>
+    @if (titulo.touched && titulo.invalid) {
+      <ion-note color="danger" class="error">
+        @if (titulo.errors?.['required']) {
+          El título es obligatorio.
+        } @else if (titulo.errors?.['minlength']) {
+          El título debe tener mínimo 5 caracteres.
+        }
+      </ion-note>
+    }
+
+    <ion-textarea
+      formControlName="descripcion"
+      label="Descripción corta"
+      labelPlacement="floating"
+      fill="outline"
+      [counter]="true"
+      maxlength="100"
+      class="campo"
+    ></ion-textarea>
+
+    <ion-select
+      formControlName="prioridad"
+      label="Prioridad"
+      labelPlacement="floating"
+      fill="outline"
+      interface="popover"
+      class="campo"
+    >
+      <ion-select-option value="Alta">Alta</ion-select-option>
+      <ion-select-option value="Media">Media</ion-select-option>
+      <ion-select-option value="Baja">Baja</ion-select-option>
+    </ion-select>
+
+    <ion-button type="submit" expand="block" class="boton-guardar">Guardar tarea</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,11 @@
+.completada h2,
+.completada p {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.vacio {
+  text-align: center;
+  margin-top: 40%;
+  color: var(--ion-color-medium);
+}
