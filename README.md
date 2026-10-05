@@ -1,28 +1,32 @@
-# Gestor de Tareas (Ionic + Angular)
+# Gestor de Tareas
 
-Aplicación web/móvil para organizar tareas, desarrollada con Ionic y Angular standalone.
+Aplicación web para organizar tareas, creada con Ionic y Angular standalone. Permite agregar tareas con prioridad, marcarlas como completadas y guardarlas en el navegador.
 
 ## Requisitos
 
-- Node.js 18.19 o superior (o una versión compatible de Node.js 20/22) y npm.
-- Ionic CLI: `npm install -g @ionic/cli`.
+- Node.js 18.19 o superior y npm. También son compatibles Node.js 20 y 22 en versiones admitidas por Angular.
+- Ionic CLI.
+
+Instala Ionic CLI si aún no lo tienes:
+
+```bash
+npm install -g @ionic/cli
+```
 
 ## Instalación y ejecución
 
-Desde la carpeta del proyecto:
-## Clonar repositorio 
-
-git clone 
-
+Clona este repositorio y entra en la carpeta del proyecto:
 
 ```bash
+git clone https://github.com/Eliastutio121122123/gestor-tareas-codigo.git
+cd gestor-tareas-codigo
 npm install
 ionic serve
 ```
 
-También puedes iniciar el servidor con `npm start`. La aplicación estará disponible en `http://localhost:8100`.
+La aplicación estará disponible en `http://localhost:8100`. También puedes iniciarla con `npm start`.
 
-Para generar una compilación de producción:
+Para generar la compilación de producción:
 
 ```bash
 npm run build
@@ -30,14 +34,14 @@ npm run build
 
 ## Funcionalidades
 
-- Crear tareas con título, descripción y prioridad.
+- Crear tareas con título, descripción corta y prioridad alta, media o baja.
 - Validar que el título tenga al menos cinco caracteres.
-- Marcar tareas como completadas y eliminarlas.
-- Guardar las tareas en `localStorage` para conservarlas al recargar.
+- Marcar tareas como completadas o eliminarlas.
+- Conservar las tareas en `localStorage` al recargar la página.
 
-## Estructura
+## Estructura del proyecto
 
 - `src/app/models`: modelo de tarea.
-- `src/app/services`: gestión y persistencia de tareas.
-- `src/app/components/tarea-form`: formulario de creación.
-- `src/app/home`: pantalla principal.
+- `src/app/services`: lógica de tareas y almacenamiento local.
+- `src/app/components/tarea-form`: formulario para crear tareas.
+- `src/app/home`: pantalla principal con la lista de tareas.
